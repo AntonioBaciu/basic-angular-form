@@ -1,0 +1,13 @@
+<h2 class="text-center my-3">Best friends</h2>
+<section class="row d-flex justify-content-center">
+  <div class="card text-center m-3" *ngFor="let friend of bestFriends">
+    <h4 class="card-title my-3">
+      {{ friend.firstName | uppercase }} {{ friend.lastName | uppercase }}
+    </h4>
+    <div class="card-text mt-3">
+      <p>{{ friend.email }}</p>
+      <p>{{ friend.phone }}</p>
+      <p>Favorite language: <br />{{ friend.language }}</p>
+    </div>
+  </div>
+</section>

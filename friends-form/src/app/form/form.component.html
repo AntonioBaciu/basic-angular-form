@@ -1,0 +1,129 @@
+<!-- Input form -->
+<section class="container d-flex justify-content-around">
+  <div>
+    <h2 class="my-3">Add a friend</h2>
+    <form [formGroup]="FormData" novalidate (ngSubmit)="submitData()">
+      <div class="form-group">
+        <label for="firstName"
+          >First Name
+          <input
+            type="text"
+            class="form-control"
+            id="firstName"
+            name="firstName"
+            placeholder="your first name"
+            formControlName="firstName"
+            required="required"
+          />
+        </label>
+      </div>
+      <div class="form-group">
+        <label for="lastName"
+          >Last Name
+          <input
+            type="text"
+            class="form-control"
+            id="lastName"
+            name="lastName"
+            placeholder="your last name"
+            formControlName="lastName"
+            required="required"
+          />
+        </label>
+      </div>
+      <div class="form-group">
+        <label for="Email"
+          >Email
+          <input
+            type="email"
+            class="form-control"
+            id="email"
+            name="email"
+            placeholder="your email"
+            formControlName="email"
+            required="required"
+          />
+        </label>
+      </div>
+      <div class="form-group">
+        <label for="phone"
+          >Phone Number
+          <input
+            type="text"
+            class="form-control"
+            id="phone"
+            name="phone"
+            placeholder="your phone number"
+            formControlName="phone"
+            required="required"
+          />
+        </label>
+      </div>
+      <div class="form-group">
+        <label for="language"
+          >Favorite language
+          <select
+            class="custom-select"
+            id="language"
+            name="language"
+            formControlName="language"
+            required
+          >
+            <option value="" disabled>Select your favorite language</option>
+            <option *ngFor="let language of languages" [value]="language">
+              {{ language }}
+            </option>
+          </select>
+        </label>
+      </div>
+      <div class="form-group">
+        <label class="check" for="bestFriend"
+          >Best friend
+          <input
+            type="checkbox"
+            class="form-control"
+            id="bestFriend"
+            name="bestFriend"
+            formControlName="bestFriend"
+            value="false"
+            (change)="toggleSelection($event)"
+          />
+          <span class="checkmark"></span>
+        </label>
+      </div>
+      <p>Form status: {{ FormData.status }}</p>
+      <button
+        type="submit"
+        class="btn btn-success mb-3"
+        [disabled]="!FormData.valid"
+      >
+        Submit
+      </button>
+    </form>
+  </div>
+  <div>
+    <h2 class="my-3">Remove a friend</h2>
+    <form novalidate (ngSubmit)="deleteData()">
+      <div class="form-group">
+        <label for="delete"
+          >Email
+          <input
+            type="email"
+            class="form-control"
+            id="delete"
+            name="email"
+            [formControl]="deleteFriend"
+            required="required"
+          />
+        </label>
+      </div>
+      <button
+        type="submit"
+        class="btn btn-danger mb-3"
+        [disabled]="!deleteFriend.valid"
+      >
+        Delete
+      </button>
+    </form>
+  </div>
+</section>
